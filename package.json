@@ -5,7 +5,8 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "clear && node app.js",
+    "start:mysql": "node --watch server.mysql.js",
+    "start:local": "node --watch server.local.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "LeSavantR",
