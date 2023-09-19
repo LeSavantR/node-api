@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise'
 
-const config = {
+const DEFAULT_CONFIG = {
   host: '127.0.0.1',
   port: 3306,
   user: 'root',
@@ -8,7 +8,9 @@ const config = {
   database: 'moviesdb'
 }
 
-const connection = await mysql.createConnection(config)
+const connectionString = process.env.DATABASE_URL // ?? DEFAULT_CONFIG
+
+const connection = await mysql.createConnection(connectionString)
 
 const BASE_MOVIE_DATA_QUERY = 'SELECT BIN_TO_UUID(id) as id, title, year, director, duration, poster, rate FROM movie'
 const BASE_MOVIE_DATA_INSERT = 'INSERT INTO movie (id, title, year, director, duration, poster, rate) VALUES'

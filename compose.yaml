@@ -1,0 +1,22 @@
+version: "2.21.0"
+
+volumes:
+    mysqlVol:
+        external: true
+
+networks:
+    development:
+        external: true
+
+services:
+    backend:
+        image: microservice:node-alpine
+        container_name: backend
+
+    mysql:
+        image: mysql:8.0-debian
+        container_name: mysql
+
+    mongodb:
+        image: mongo:6.0-jammy
+        container_name: mongodb
